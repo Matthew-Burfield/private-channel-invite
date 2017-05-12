@@ -17,19 +17,17 @@ module.exports = (function () {
 
 
     updateUserToken(user_id, token) {
-      return new Promise((resolve, reject) => {
-        MongoClient.connect(process.env.DB_CONNECTION, (err, db) => {
-          const tokenCollection = db.collection('tokens')
-          tokenCollection.update(
-            { user_id: user_id },
-            {
-              user_id,
-              token
-            },
-            { upsert: true }
-          )
-          db.close()
-        })
+      MongoClient.connect(process.env.DB_CONNECTION, (err, db) => {
+        const tokenCollection = db.collection('tokens')
+        tokenCollection.update(
+          { user_id: user_id },
+          {
+            user_id,
+            token
+          },
+          { upsert: true }
+        )
+        db.close()
       })
     }
 
