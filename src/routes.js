@@ -112,7 +112,7 @@ module.exports = (function () {
           const token = bodyObj.access_token; // Auth token
           const user_id = bodyObj.user_id
 
-          updateUserToken(user_id, token)
+          helpers.updateUserToken(user_id, token)
 
           res.redirect('https://matthew-burfield.github.io/private-channel-invite/')
         }
