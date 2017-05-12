@@ -4,6 +4,10 @@
   "main": "index.js",
   "author": "Matthew Burfield <burfie@hotmail.com> (https://matthew-burfield.github.io/)",
   "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nf run nodemon index.js"
+  },
   "dependencies": {
     "body-parser": "1.17.1",
     "express": "4.15.2",
