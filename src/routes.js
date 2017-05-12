@@ -27,7 +27,7 @@ module.exports = (function () {
                   text: `@${user_name} has invited everyone to join the private channel #${group.name}`,
                   attachments: [
                     {
-                      text: 'Click below to join',
+                      text: 'Click below to join and look in the channel section to see your new group!',
                       fallback: 'You are unable to join',
                       callback_id: 'join_channel',
                       color: '#3AA3E3',
