@@ -3,5 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Matthew Burfield <burfie@hotmail.com> (https://matthew-burfield.github.io/)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "1.17.1",
+    "express": "4.15.2",
+    "http": "0.0.0",
+    "request": "2.81.0"
+  },
+  "devDependencies": {
+    "nodemon": "1.11.0"
+  }
 }
