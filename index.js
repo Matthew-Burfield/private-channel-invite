@@ -117,7 +117,7 @@ app.post('/slack', (req, res) => {
           }
         }
       } else {
-        sendUserInfo(responseURL, `You haven't authorized ${APP_NAME} access to your private channels.`)
+        sendUserInfo(responseURL, `You haven't authorized ${APP_NAME} access to your private channels. Please go to https://matthew-burfield.github.io/private-channel-invite/ to authorize.`)
       }
     });
   });
@@ -140,8 +140,6 @@ app.get('/slack/oauth', (req, res) => {
 
   request.post('https://slack.com/api/oauth.access', data, (error, response, body) => {
     if (!error && response.statusCode == 200) {
-      // You are done.
-      // If you want to get team info, you need to get the token here
       const bodyObj = JSON.parse(body)
       const token = bodyObj.access_token; // Auth token
       const user_id = bodyObj.user_id
@@ -159,16 +157,7 @@ app.get('/slack/oauth', (req, res) => {
         db.close()
       })
 
-      request.post('https://slack.com/api/team.info', {form: {token: token}}, (error, response, body) => {
-        if (!error && response.statusCode == 200) {
-          if(JSON.parse(body).error == 'missing_scope') {
-            res.send('Gif has been added to your team!');
-          } else {
-            let team = JSON.parse(body).team.domain;
-            res.redirect(`http://${team}.slack.com/apps/manage`);
-          }
-        }
-      });
+      res.redirect('https://matthew-burfield.github.io/private-channel-invite/')
     }
   });
 });
