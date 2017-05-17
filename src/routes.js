@@ -53,7 +53,8 @@ module.exports = (function () {
             sendUserResponse(`You haven't authorized ${constants.APP_NAME} access to your private channels. Please go to https://matthew-burfield.github.io/private-channel-invite/ to authorize.`)
           }
         });
-      });
+      })
+      .catch(reason => sendUserResponse(reason))
       res.status(200).send('Processing...')
     },
 

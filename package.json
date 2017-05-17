@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon --exec 'nf start'"
   },
   "dependencies": {
     "body-parser": "1.17.1",

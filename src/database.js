@@ -1,5 +1,6 @@
 module.exports = (function () {
   const MongoClient = require('mongodb').MongoClient
+  const APP_NAME = require('./constants').APP_NAME
 
   const publicMethods = {
 
@@ -9,7 +10,13 @@ module.exports = (function () {
           const tokenCollection = db.collection('tokens')
           const doc = tokenCollection.findOne(
             { user_id }
-          ).then(res => resolve(res.token))
+          ).then((res) => {
+            if (res === null) {
+              reject(`You haven't authorized ${APP_NAME} access to your private channels. Please go to https://matthew-burfield.github.io/private-channel-invite/ to authorize.`)
+            } else {
+              resolve(res.token)
+            }
+          })
           db.close()
         })
       })
