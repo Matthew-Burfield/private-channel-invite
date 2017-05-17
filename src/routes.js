@@ -46,7 +46,7 @@ module.exports = (function () {
                 }
                 request.post(req.body.response_url, { body: JSON.stringify(data) });
               } else {
-                sendUserResponse('Only the group creator and do a bulk invite')
+                sendUserResponse('Only the group creator can do a bulk invite')
               }
             }
           } else {
